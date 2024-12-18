@@ -1,0 +1,1499 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+
+/* Базові стилі */
+header {
+  width: 100%;
+  background-color: #fff;
+  position: relative;
+  padding: 10px 20px;
+}
+header .container {
+  display: flex; /* Вирівнює елементи горизонтально */
+  justify-content: space-between; /* Відступ між логотипом та меню */
+  align-items: center; /* Вирівнює по вертикалі по центру */
+  width: 100%;
+  max-width: 1200px; /* Обмеження ширини для великих екранів */
+  margin: 0 auto; /* Центрує весь хедер */
+  padding: 10px 20px; /* Внутрішні відступи */
+}
+
+.logo img {
+  width: 120px;
+}
+
+/* Гамбургер-іконка */
+.hamburger {
+  display: none; /* За замовчуванням ховається */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Анімація для хрестика */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Мобільне меню */
+.mobile-menu {
+  display: none; /* Ховається за замовчуванням */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #BA5AFA;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.mobile-menu.active {
+  display: flex;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.mobile-menu ul li {
+  margin: 20px 0;
+}
+
+.mobile-menu ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.btn-mobile {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.btn-mobile.contact {
+  background-color: #ffffff; /* Білий фон */
+  color: #333333; /* Темний колір тексту */
+  border: 1px solid #ddd; /* Сіра рамка */
+  padding: 10px 20px; /* Внутрішні відступи */
+  border-radius: 50px; /* Закруглені краї */
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none; /* Відключаємо підкреслення */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-mobile.contact:hover {
+  background-color: #f78c26; /* Оранжевий фон при наведенні */
+  color: #ffffff; /* Білий текст при наведенні */
+  border-color: #f78c26; /* Колір рамки */
+}
+.apply {
+  background-color: #f57c00;
+  color: #fff;
+}
+
+.contact {
+  background-color: #fff;
+  color: #333;
+  border: 2px solid #333;
+}
+
+/* Показуємо гамбургер тільки на мобільних */
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  nav.mobile-menu {
+    display: none; /* За замовчуванням ховається */
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .mobile-menu {
+    display: none !important;
+  }
+}
+/* Десктопне меню */
+.desktop-menu {
+  display: flex;
+}
+
+.desktop-menu ul {
+  list-style: none;
+  display: flex;
+  gap: 30px; /* Відступ між пунктами меню */
+  margin: 0;
+  padding: 0;
+}
+
+.desktop-menu ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.desktop-menu ul li a:hover {
+  color: #f57c00; /* Колір при наведенні */
+}
+
+/* Ховаємо десктопне меню на мобільних */
+@media screen and (max-width: 768px) {
+  .desktop-menu {
+    display: none;
+  }
+}
+
+/* Показуємо мобільне меню на малих екранах */
+@media screen and (min-width: 769px) {
+  .mobile-menu {
+    display: none !important;
+  }
+}
+.buttons {
+  display: flex;
+  gap: 20px; /* Відстань між кнопками */
+}
+
+.buttons .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  white-space: nowrap; /* Текст не переноситься */
+}
+
+.btn.apply {
+  background-color: #f57c00; /* Оранжевий фон */
+  color: #fff;
+}
+
+.btn.apply:hover {
+  background-color: #d66a00; /* Темно-оранжевий при наведенні */
+}
+
+.btn.contact {
+  background-color: #fff; /* Білий фон */
+  color: #333;
+  border: 1px solid #333; /* Темна рамка */
+}
+
+.btn.contact:hover {
+  background-color: #333; /* Темний фон */
+  color: #fff; /* Білий текст */
+}
+
+/* Ховаємо блок кнопок на мобільних пристроях */
+@media screen and (max-width: 768px) {
+  .buttons {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  header .buttons {
+    display: none !important;
+  }
+}
+
+/* Залишаємо їх лише у десктопній версії */
+@media screen and (min-width: 769px) {
+  header .buttons {
+    display: flex; /* Повертаємо їх для ПК */
+    gap: 20px;
+  }
+}
+
+.container {
+
+}
+
+nav .menu {
+list-style: none;
+display: flex;
+gap: 40px; /* Відступи між пунктами меню */
+margin: 0;
+padding: 0;
+flex: 1; /* Розтягування меню */
+justify-content: center; /* Центрування пунктів меню */
+}
+
+nav .menu li a {
+text-decoration: none;
+color: #333;
+font-size: 18px; /* Збільшений розмір шрифту */
+font-weight: bold;
+white-space: nowrap; /* Заборона перенесення тексту */
+}
+nav .menu li a:hover {
+color: #f57c00;
+}
+
+.buttons {
+display: flex;
+gap: 20px; /* Проміжок між кнопками */
+}
+
+.btn {
+text-decoration: none;
+padding: 10px 20px;
+border-radius: 50px;
+font-size: 14px;
+white-space: nowrap;
+}
+.btn-outline {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+color: #fff; /* Колір тексту */
+text-decoration: none; /* Забрати підкреслення */
+font-weight: bold;
+font-size: 20px;
+border: 3px solid #fff; /* Білий обідок */
+padding: 10px 20px; /* Внутрішні відступи */
+border-radius: 50px; /* Закруглені краї */
+transition: all 0.3s ease; /* Плавний перехід */
+margin-top: 20px; /* Відстань від тексту зверху */
+display: inline-block; /* Щоб margin-top спрацював */
+}
+
+.btn-outline .arrow {
+margin-left: 20px; /* Відступ для стрілки */
+}
+
+.btn-outline:hover {
+background-color: #fff; /* Білий фон при наведенні */
+color: #f57c00; /* Колір тексту при наведенні */
+}
+.btn-yoyaku {
+display: inline-block;
+background-color: #f57c00; /* Колір фону як у btn.apply */
+color: #fff; /* Білий текст */
+font-weight: bold;
+text-decoration: none;
+text-align: center;
+padding: 10px 20px; /* Відступи всередині кнопки */
+border-radius: 50px; /* Закруглені кути */
+font-size: 16px; /* Розмір шрифту */
+transition: background-color 0.3s, transform 0.3s; /* Плавний ефект */
+cursor: pointer;
+}
+
+.btn-yoyaku:hover {
+background-color: #d66a00; /* Колір фону при наведенні */
+transform: translateY(-3px); /* Легкий підйом кнопки */
+}
+
+.btn.apply {
+background-color: #f57c00;
+color: #fff;
+font-weight: bold;
+margin-left: 50px;
+}
+
+.btn.apply:hover {
+background-color: #d66a00;
+}
+
+.btn.contact {
+background-color: #fff;
+color: #333;
+border: 1px solid #333;
+}
+
+.btn.contact:hover {
+background-color: #333;
+color: #fff;
+}
+
+
+.contact {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
+}
+
+.contact:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.hero {
+position: relative;
+height: 700px;
+background-image: url('../images/zion-meet-header-background-main.jpg');
+background-size: cover;
+background-position: center;
+display: flex;
+align-items: fle; /* Розміщує текст ближче до верху */
+justify-content: flex-end; /* Вирівнює текст ліворуч */
+padding: 150px 500px 0 50px; /* Верхній padding для відступу */
+color: #fff;
+text-align: left;
+}
+
+.hero-content {
+  padding: 20px 30px;
+  border-radius: 10px;
+  max-width: 600px; 
+}
+
+.large-text {
+  font-size: 55px; /* Розмір для великого тексту */
+  font-weight: bold; /* Жирний текст */
+  line-height: 1.4; /* Відступ між рядками */
+  white-space: nowrap;
+  
+}
+
+.small-text {
+  font-size: 28px; /* Розмір для меншого тексту */
+  font-weight: normal; /* Звичайний текст */
+  line-height: 1.5; /* Відступ між рядками */
+  white-space: nowrap;
+  
+}
+
+.about {
+  padding: 50px 20px; /* Відступи для секції */
+  background-color: #f9f9f9; /* Світло-сірий фон */
+  text-align: center;
+}
+
+.about .container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column; /* Вертикальне розташування елементів */
+  align-items: center; /* Центрування всіх елементів */
+}
+
+.about h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.about .description {
+  font-size: 20px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  color: #333;
+  text-align: center; /* Текст у центрі */
+}
+
+.about .image-container {
+  margin: 20px 0;
+}
+
+.about .image-container img {
+  max-width: 100%; /* Масштабування зображення */
+  height: auto; /* Збереження пропорцій */
+  border-radius: 10px; /* Закруглені краї */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тінь для зображення */
+}
+.image-row {
+  position: relative;
+  background-color: #BA5AFA; /* Колір фону */
+  padding: 30px 20px;
+  text-align: center;
+  height: 300px;
+}
+
+.image-row .container {
+  display: flex;
+  justify-content: center; /* Центруємо зображення */
+  gap: 20px; /* Проміжки між зображеннями */
+}
+
+.image-row .images img {
+  width: 350px; /* Ширина кожного зображення */
+  height: auto; /* Збереження пропорцій */
+  border-radius: 20px; /* Закруглені краї */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тінь для зображень */
+}
+
+.image-row .arrow {
+  position: absolute;
+  bottom: -20px; /* Виступ стрілки за межі блоку */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #BA5AFA; /* Колір має відповідати фону */
+}
+.features {
+  padding: 50px 20px;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.features h2 {
+  font-size: 40px;
+  margin-bottom: 30px; /* Відступ між заголовком і сіткою */
+  font-weight: bold;
+}
+
+.feature-grid {
+  display: flex; /* Використовуємо Flexbox */
+  flex-wrap: wrap; /* Дозволяємо перенесення рядків */
+  justify-content: center; /* Центруємо картки */
+  gap: 20px; /* Проміжок між картками */
+}
+
+.feature-card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легка тінь */
+  padding: 20px;
+  width: calc(33.333% - 20px); /* Три картки в ряд */
+  max-width: 300px; /* Максимальна ширина для гарного вигляду */
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px); /* Підйом при наведенні */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card .icon {
+  font-size: 40px;
+  color: #BA5AFA; /* Фіолетовий колір */
+  margin-bottom: 15px;
+}
+
+.feature-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.feature-card p {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+}
+.reviews {
+margin-top: 80px;
+  padding: 50px 20px;
+  text-align: center;
+  background-color: ;
+  margin-bottom: 80px;
+}
+
+.reviews h2 {
+  font-size: 40px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center; /* Центруємо заголовок */
+}
+
+.reviews .subtitle {
+  font-size: 30px;
+  font-weight: bold;
+  color: #BA5AFA; /* Фіолетовий колір для підзаголовка */
+  margin-bottom: 30px; /* Додано відступ між підзаголовком і картками */
+  text-align: center; /* Центруємо підзаголовок */
+}
+.pricing-container .subtitle-2{
+font-size: 30px;
+  font-weight: bold;
+  color: #F78C26; /* Фіолетовий колір для підзаголовка */
+  margin-bottom: 30px; /* Додано відступ між підзаголовком і картками */
+  text-align: center; /* Центруємо підзаголовок */
+}
+
+.container {
+  max-width: 1200px; /* Обмежуємо ширину секції */
+  margin: 0 auto; /* Центруємо весь вміст секції */
+}
+
+.review-grid {
+  display: flex; /* Використовуємо Flexbox */
+  flex-wrap: wrap; /* Дозволяємо перенесення рядків */
+  gap: 20px; /* Проміжок між картками */
+  justify-content: center; /* Центруємо картки */
+  margin-bottom: ;
+}
+
+.review-card {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: calc(33.333% - 20px); /* Три картки в ряд */
+  max-width: 400px;
+  text-align: center; /* Центруємо вміст у картках */
+  display: flex;
+  flex-direction: column; /* Розташовуємо елементи вертикально */
+  justify-content: space-between;
+  height: 100%; /* Усі блоки однієї висоти */
+  min-height: 300px; /* Фіксована мінімальна висота */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.review-card img {
+width: 80px; /* Однаковий розмір фото */
+height: 80px;
+object-fit: cover; /* Фото не деформується */
+border-radius: 50%;
+margin: 0 auto 15px auto;
+}
+
+.review-card h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.review-card .role {
+  font-size: 14px;
+  color: #BA5AFA;
+  margin-bottom: 15px;
+}
+
+.review-card .review-text {
+font-size: 14px;
+color: #666;
+line-height: 1.6;
+margin-bottom: 15px;
+flex-grow: 1; /* Розтягуємо текст, щоб вирівняти зірки внизу */
+}
+
+.review-card .stars {
+  font-size: 16px;
+  color: #ffa500;
+  margin-top: auto; /* Фіксуємо зірки внизу картки */
+}
+.recent-articles {
+height: 400px;
+  position: relative;
+  padding: 50px 20px;
+  background-color: #BA5AFA;
+  height: 500px;
+  text-align: center;
+}
+
+.recent-articles h2 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #ffffff;
+  text-align: center; /* Центрування заголовка */
+}
+.articles-grid {
+  display: flex; /* Розташовує блоки горизонтально */
+  flex-wrap: wrap; /* Дозволяє перенесення на наступний рядок */
+  gap: 20px; /* Відстань між блоками */
+  justify-content: center; /* Центрує блоки по горизонталі */
+}
+.article-card {
+  position: relative; /* Батьківський елемент для позиціонування */
+    overflow: hidden;   /* Ховає зайві елементи */
+  background-color: #fff; /* Білий фон */
+  border-radius: 10px; /* Закруглені краї */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тінь */
+  width: calc(33.333% - 20px); /* Три блоки на ширину рядка */
+  max-width: 350px; /* Максимальна ширина картки */
+  padding: 20px; /* Внутрішні відступи */
+  text-align: left; /* Текст по лівому краю */
+  transition: transform 0.3s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-5px); /* Підйом при наведенні */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+.article-card .category {
+font-size: 18px;
+color: #BA5AFA;
+margin-bottom: 15px;
+display: inline-block;
+font-weight: bold;
+}
+
+.article-card .date { 
+  font-size: 16px;
+  color: #555;
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10; /* Забезпечує видимість над іншими елементами */
+}
+
+
+.article-card h3 {
+font-size: 22px;
+font-weight: bold;
+margin-bottom: 15px;
+color: #333;
+margin: 20px 0
+flex-grow: 1; /* Розтягуємо заголовок для правильного вирівнювання */
+}
+
+.article-card .read-more {
+font-size: 17px;
+color: #BA5AFA;
+font-weight: bold;
+text-decoration: none;
+margin-top: 10px;
+display: inline-block;
+align-self: flex-start; /* Для вирівнювання кнопки */
+}
+.article-card {
+background-color: #fff;
+border-radius: 15px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+padding: 20px;
+max-width: 300px;
+height: 300px; /* Початковий розмір */
+text-align: left;
+overflow: hidden; /* Ховає зайвий контент */
+transition: all 0.3s ease; /* Плавна анімація */
+cursor: pointer;
+}
+
+.article-card .read-more {
+color: #BA5AFA;
+font-weight: bold;
+text-decoration: underline;
+cursor: pointer;
+}
+
+.article-card .full-content {
+margin-top: 15px;
+font-size: 14px;
+color: #555;
+display: none; /* Спочатку приховуємо контент */
+}
+.price-features {
+  list-style-type: none;
+  color: white;
+  font-size: 16px;
+  margin: 20px;
+  margin-bottom: 50px;
+}
+
+.article-card {
+  display: flex; /* Включаємо flexbox */
+  flex-direction: column; /* Вертикальне розташування */
+  justify-content: space-between; /* Розподіл вмісту між верхом і низом */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: calc(33.333% - 20px); /* Три блоки на ПК */
+  max-width: 300px;
+  padding: 20px;
+  text-align: left;
+  position: relative;
+  height: 300px; /* Фіксована висота */
+}
+
+.pricing-plans {
+  padding: 60px 20px; /* Відступи для секції */
+  text-align: center;
+  margin-top: 80px;
+}
+
+.pricing-plans h2 {
+  font-size: 40px; /* Розмір заголовка */
+  font-weight: bold;
+  margin-bottom: 10px; /* Відступ між заголовком і підзаголовком */
+  color: #333; /* Основний колір */
+}
+
+.pricing-plans .subtitle {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 40px; /* Відступ між підзаголовком і картками */
+}
+
+.pricing-container {
+  max-width: 1200px;
+  margin: 0 auto; /* Центрування всього контенту */
+}
+
+.plans-grid {
+  display: flex;
+  justify-content: center; /* Центрування карток */
+  flex-wrap: wrap; /* Адаптивність для менших екранів */
+  gap: 40px; /* Відстань між картками */
+}
+
+.plan-card {
+  background-color: #BA5AFA; /* Фіолетовий фон */
+  border-radius: 15px; /* Закруглені кути */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тінь */
+  padding: 20px;
+  width: 320px; /* Однаковий розмір карток */
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s; /* Ефекти при наведенні */
+}
+
+.plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.plan-card h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.plan-card .price {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.plan-card hr {
+  border: 0;
+  height: 1px;
+  background: #fff;
+  margin: 10px 0;
+}
+
+.plan-card .features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.plan-card .features li {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+#contact-form {
+background-color: #f9f9f9;
+padding: 50px 20px;
+margin-top: 20px;
+text-align: center;
+}
+#contact-form p {
+font-size: 20px; 
+color: #333; 
+margin-bottom: 30px; 
+}
+
+#contact-form p b {
+font-size: 20px; /* Задає розмір шрифту */
+color: #333; /* Колір тексту (темно-сірий) */
+margin-bottom: 10px;
+font-weight: bold;
+}
+.form-container {
+background-color: #F78C26;
+padding: 30px 30px 60px; /* Збільшуємо padding знизу для кнопки */
+border-radius: 20px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+max-width: 500px;
+margin: 0 auto;
+text-align: left;
+position: relative; /* Додаємо позицію для кнопки */
+margin-bottom: 80px;
+margin-top: 50px; 
+transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавна анімація */
+}
+
+.form-container:hover {
+transform: translateY(-5px); /* Підняття блоку */
+box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Посилена тінь */
+}
+
+.form-container label {
+display: block;
+font-size: 14px;
+font-weight: bold;
+color: white;
+margin-bottom: 5px;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+width: 100%;
+padding: 10px;
+margin-bottom: 15px;
+border-radius: 5px;
+border: 1px solid #ccc;
+font-size: 14px;
+}
+
+.button-container {
+position: absolute; /* Центруємо нижче фону */
+bottom: -70px;
+left: 120px; /* Зміщуємо від краю контейнера */
+width: 50%; /* Розтягуємо контейнер на всю ширину */
+text-align: center; /* Центруємо кнопку по горизонталі */
+}
+.button-container-2{
+position: absolute; /* Центруємо нижче фону */
+bottom: -70px;
+left: 120px; /* Зміщуємо від краю контейнера */
+width: 50%; /* Розтягуємо контейнер на всю ширину */
+text-align: center; /* Центруємо кнопку по горизонталі */
+}
+
+.btn.submit-btn {
+background-color: #f57c00;
+color: white;
+padding: 15px 0; /* Більша висота кнопки */
+font-size: 16px;
+width: 80%; /* Кнопка займає 80% ширини */
+max-width: 400px; /* Максимальна ширина */
+margin: 0 auto; /* Центрування кнопки */
+border: none;
+border-radius: 50px;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn.submit-btn:hover {
+background-color: #d66a00;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cta-section {
+  background-color: #BA5AFA; /* Фіолетовий фон */
+  padding: 50px 20px; /* Відступи навколо секції */
+  text-align: center; /* Центрування тексту та кнопки */
+  position: relative; /* Для стрілки */
+}
+
+.cta-title {
+  color: #fff; /* Білий колір тексту */
+  font-size: 40px; /* Розмір шрифту */
+  font-weight: bold; /* Жирний текст */
+  margin-bottom: 20px; /* Відступ між текстом і кнопкою */
+}
+
+.cta-button {
+  display: inline-block; /* Для кнопки */
+  background-color: #fff; /* Білий фон кнопки */
+  color: #000000; /* Фіолетовий текст кнопки */
+  text-decoration: none; /* Забрати підкреслення */
+  padding: 10px 20px; /* Відступи всередині кнопки */
+  border-radius: 50px; /* Закруглені краї кнопки */
+  font-size: 25px;
+  font-weight: bold; /* Жирний текст */
+  transition: transform 0.3s, box-shadow 0.3s; /* Ефекти при наведенні */
+}
+
+.cta-button:hover {
+  transform: translateY(-3px); /* Зсув угору при наведенні */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тінь при наведенні */
+}
+
+.cta-section::after {
+  content: ''; /* Псевдоелемент */
+  position: absolute;
+  bottom: -20px; /* Виступ стрілки */
+  left: 50%; /* Центрування по горизонталі */
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent; /* Прозорі боки */
+  border-right: 20px solid transparent; /* Прозорі боки */
+  border-top: 20px solid #BA5AFA; /* Фон стрілки */
+}
+#faq {
+  padding: 60px 40px;
+  text-align: center;
+}
+.faq-container h2{
+  margin-top: 40px;
+  font-size: 40px;
+}
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  margin: 30px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.faq-question:hover {
+  background-color: #ffa500;
+  color: #fff;
+}
+
+.faq-answer {
+  display: none;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-left: 3px solid #BA5AFA;
+  font-size: 18px;
+  color: #555;
+  margin-top: 5px;
+  border-radius: 0 0 5px 5px;
+}
+.support-section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.support-section h2 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+  margin-bottom: 30px;
+}
+#support-form p {
+  font-size: 20px; /* Задає розмір шрифту */
+  color: #333; /* Колір тексту (темно-сірий) */
+  margin-bottom: 30px;
+  font-weight: bold;
+  max-width: 800px; /* Обмеження максимальної ширини */
+  margin-left: auto; /* Центрування тексту */
+  margin-right: auto; /* Центрування тексту */
+  text-align: center; /* Центрує текст */
+}
+
+#support-form .support-container {
+  margin-top: 30px; /* Відступ між текстом і формою */
+}
+
+#support-form .support-container {
+  margin-top: 30px; /* Відступ між текстом і формою */
+}
+
+.support-container {
+  background-color: #BA5AFA;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  margin-bottom: 80px;
+  margin-top: 50px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавна анімація */
+}
+
+.support-container:hover {
+  transform: translateY(-5px); /* Підняття блоку */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Посилена тінь */
+}
+
+.support-container label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: white;
+}
+
+.support-container input,
+.support-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+.support-container textarea {
+  resize: none;
+  height: 100px;
+}
+
+/* Стилі для кнопки */
+.button-container {
+  text-align: center; /* Центрує кнопку */
+  margin-top: 20px;
+}
+
+.btn.submit-btn {
+  background-color: #f57c00;
+  color: white;
+  padding: 15px 40px;
+  font-size: 16px;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn.submit-btn:hover {
+  background-color: #d66a00;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+  display: none; /* Спочатку ховаємо вікно */
+  position: fixed; /* Фіксоване позиціонування */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Темний фон */
+  z-index: 1000; /* Виводимо вікно на передній план */
+}
+
+/* Центруємо модальне вікно */
+.modal-content {
+  position: absolute;
+  top: 50%; /* Центрування по вертикалі */
+  left: 50%; /* Центрування по горизонталі */
+  transform: translate(-50%, -50%); /* Точне центрування */
+  background-color: white; /* Колір фону */
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 90%; /* Адаптивна ширина */
+  max-width: 400px; /* Обмеження максимальної ширини */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+  margin-top: 15px;
+  background-color: #f57c00;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+  background-color: #d66a00;
+}
+/*Ready to Get Started */
+.ready-section {
+background-color: #fff; /* Білий фон */
+text-align: center; /* Центруємо весь вміст */
+padding: 50px 20px; /* Внутрішні відступи */
+position: relative;
+margin-bottom: 100px;
+}
+
+.ready-section h2 {
+font-size: 40px; /* Розмір заголовку */
+color: #333; /* Темний колір тексту */
+margin-bottom: 10px; /* Відступ між заголовком і текстом */
+font-weight: bold;
+}
+
+.ready-section p {
+font-size: 30px;
+font-weight: bold;
+color: #BA5AFA;
+margin-bottom: 10px;
+text-align: center;
+}
+
+.ready-icon img {
+width: 120px; /* Розмір іконки */
+height: auto; /* Збереження пропорцій */
+border-radius: 20%; /* Закруглені краї для іконки */
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+margin-top: 20px; /* Відступ від тексту */
+transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавна анімація */
+}
+
+.ready-icon img:hover {
+transform: scale(1.1); /* Збільшення картинки на 10% */
+box-shadow: 0 0 30px rgba(0, 0, 0, 0.4); /* Тінь стає більш виразною */
+}
+
+/*footer*/
+.footer-wave svg {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100px; /* Висота хвилі */
+  transform: rotate(0deg); /* Напрямок хвилі */
+}
+
+.footer {
+  background-color: #BA5AFA;
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-left h3 {
+  font-size: 40px;
+  margin-bottom: 10px;
+  margin-left: -50px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.footer-social img {
+  width: 50px;
+  height: 45px;
+  border-radius: 460%;
+  padding: 5px;
+}
+
+.footer-center {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+font-weight: bold;
+}
+
+.footer-column ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-right h3 {
+  font-size: 30px;
+font-weight: bold;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.footer-right ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.footer-right ul li {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.footer-scroll-top {
+  margin: 20px 0;
+}
+
+.footer-scroll-top {
+  margin: 20px 0;
+}
+
+.footer-scroll-top img {
+  width: 150px;
+  height: auto;
+}
+
+.footer-copyright {
+  font-size: 18px;
+  color: #f0f0f0;
+}
+
+/* Медіазапит для мобільних пристроїв */
+@media screen and (max-width: 768px) {
+  header {
+    height: auto;
+    padding: 10px;
+  }
+/* banner */
+.hero {
+  height: auto;
+  padding: 20px 20px 50px; /* Зменшуємо верхній padding */
+}
+.btn-outline {
+  display: inline-block;
+  background-color: #BA5AFA; /* Фіолетовий колір */
+  color: #fff; /* Білий текст */
+  text-decoration: none; /* Прибираємо підкреслення */
+  border: 2px solid #ffffff; /* Фіолетова рамка */
+  padding: 10px 20px; /* Відступи всередині кнопки */
+  border-radius: 50px; /* Закруглені кути */
+  font-size: 18px; /* Розмір шрифту */
+  font-weight: bold; /* Жирний текст */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Плавна анімація */
+}
+
+.btn-outline:hover {
+  background-color: #9c4cc6; /* Трохи темніший фіолетовий при наведенні */
+  border-color: #ffffff; /* Колір рамки змінюється */
+  color: #fff; /* Залишається білий текст */
+}
+.hero-content {
+  padding: 0 10px; /* Прибираємо зайві внутрішні відступи */
+  margin-top: -10px; /* Додаємо негативний margin для підняття тексту */
+}
+
+.large-text {
+  font-size: 28px;
+  margin-bottom: 10px; /* Відступ між текстами */
+}
+
+.small-text {
+  font-size: 18px;
+}
+
+
+  .feature-grid, .review-grid, .plans-grid {
+    flex-direction: column; /* Вертикальне розміщення */
+    gap: 20px;
+  }
+
+  .review-card, .plan-card {
+    width: 100%;
+  }
+
+  .about .image-container img {
+    width: 100%;
+    height: auto;
+  }
+/*gallery*/
+  .images img {
+    width: 70% !important;
+    margin: 10px; 
+  }
+
+  .image-row {
+    height: 650px;
+    margin-bottom: 10px;
+  }
+  /*meritto*/
+  .features{
+    margin-top: 20px;
+  }
+  .feature-card{
+    width: 90%;
+    height: auto;
+    margin: 10px auto;
+  }
+  /* reviews*/
+  .reviews{
+    margin-top: 10px;
+  }
+  /*price*/
+  .p.subtitle-2 {
+    font-size: 10px; /* Зменшений розмір тексту */
+    line-height: 1.4; /* Оптимальний інтервал між рядками */
+  }
+/* contact form */
+.button-container-2 {
+  text-align: center; /* Центрує кнопку */
+  margin-top: 20px;
+}
+
+.btn.submit-btn {
+  margin-left: -70px; /* Забезпечує, що внутрішній margin не заважає */
+  transition: margin-left 0.3s ease; /* Додає анімацію для плавного зсуву */
+}
+  /*ready*/
+  .ready-section{
+    margin-top: 0;
+    margin: 0;
+  }
+/*footer*/
+.footer {
+  background-color: #BA5AFA; /* Фіолетовий фон */
+  color: #fff; /* Білий текст */
+  text-align: center; /* Центрування тексту */
+  padding: 20px 10px; /* Зменшені відступи для мобільних */
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column; /* Вертикальне розташування елементів */
+  align-items: center; /* Горизонтальне центрування */
+  gap: 20px; /* Відстань між блоками */
+}
+/*footer social*/
+.footer-social {
+  display: flex;
+  justify-content: center; /* Центрування іконок */
+  flex-wrap: wrap; /* Іконки переносяться на новий рядок */
+  gap: 10px; /* Відстань між іконками */
+}
+.footer-social img {
+  margin-top: 20px;
+  width: 50px; 
+  height: 45px;
+}
+/*footer left*/
+.footer-left h3{
+  margin-top: 50px;
+  text-align: center;
+  margin-left: 10px;
+}
+/*footer centre*/
+.footer-center{
+  text-align: center;
+  margin-top: 50px;
+}
+/*footer contact*/
+.footer-right h3{
+  margin-top: 50px;
+  text-align: center;
+}
+.footer-right ul li {
+  text-align: center;
+  margin: 15px; 
+  font-size: 14px; 
+  text-decoration: none;
+}
+.footer-right ul{
+  margin-top: 20px;
+}
+.footer-copyright p{
+  font-size: 14px;
+}
+/*footer scroll to top*/
+.footer-scroll-top{
+  margin-top: 10px;
+  margin-left: 20px;
+}
+  .cta-button {
+    font-size: 18px;
+    padding: 10px 15px;
+  }
+
+  footer .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .recent-articles {
+    background-color: #BA5AFA; /* Фіолетовий фон */
+    height: 1000px;
+    padding: 30px 10px; /* Відступи з усіх сторін */
+    text-align: center; /* Центрує текст */
+    position: relative; /* Для коректного розташування */
+  }
+
+  .recent-articles h2 {
+    font-size: 24px; /* Розмір заголовка */
+    color: #fff; /* Білий текст */
+    margin-bottom: 30px; /* Відступ між заголовком і блоками новин */
+    text-align: center; /* Заголовок по центру */
+  }
+
+  .articles-grid {
+    display: flex;
+    flex-direction: column; /* Блоки новин один під одним */
+    align-items: center; /* Вирівнювання блоків по центру */
+    gap: 30px; /* Відстань між блоками */
+  }
+
+  .article-card {
+    background-color: #fff; /* Білий фон для блоків */
+    border-radius: 15px; /* Закруглені кути */
+    padding: 20px;
+    width: 90%; /* Ширина блоків новин */
+    max-width: 350px; /* Максимальна ширина */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легка тінь */
+    text-align: left; /* Текст по лівому краю всередині блоку */
+    position: relative;
+    height: 250px;
+  }
+  .article-card h3 {
+    font-size: 18px;
+    margin: 15px 0;
+    color: #333;
+    font-weight: bold;
+  }
+
+  .article-card p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+  }
+}
