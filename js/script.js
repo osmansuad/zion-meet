@@ -5,11 +5,11 @@ document.querySelectorAll('.faq-question').forEach(button => {
       const isOpen = answer.style.display === 'block';
   
       document.querySelectorAll('.faq-answer').forEach(item => {
-        item.style.display = 'none'; // Закриваємо всі відповіді
+        item.style.display = 'none'; 
       });
   
       if (!isOpen) {
-        answer.style.display = 'block'; // Відкриваємо тільки потрібну
+        answer.style.display = 'block'; 
       }
     });
   });
@@ -20,13 +20,13 @@ document.querySelectorAll('.faq-question').forEach(button => {
   
     // Перевіряємо стан картки: розгорнута чи ні
     if (fullContent.style.display === 'block') {
-      fullContent.style.display = 'none'; // Сховати контент
-      card.style.height = '300px'; // Повернути фіксовану висоту
-      readMore.style.display = 'inline-block'; // Показати "この記事を読む >"
+      fullContent.style.display = 'none'; 
+      card.style.height = '300px'; 
+      readMore.style.display = 'inline-block'; 
     } else {
-      fullContent.style.display = 'block'; // Показати контент
-      card.style.height = 'auto'; // Автоматичне збільшення висоти
-      readMore.style.display = 'none'; // Сховати "この記事を読む >"
+      fullContent.style.display = 'block'; 
+      card.style.height = 'auto'; 
+      readMore.style.display = 'none'; 
     }
   }
 
@@ -38,7 +38,7 @@ document.querySelectorAll('.faq-question').forEach(button => {
   
     // Подія відправки форми
     form.addEventListener("submit", (e) => {
-      e.preventDefault(); // Запобігаємо стандартній відправці форми
+      e.preventDefault();
   
       // Показуємо модальне вікно
       modal1.style.display = "block";
@@ -47,7 +47,7 @@ document.querySelectorAll('.faq-question').forEach(button => {
     // Закриття модального вікна
     closeModal1.addEventListener("click", () => {
       modal1.style.display = "none";
-      form.reset(); // Очищаємо форму після закриття
+      form.reset(); 
     });
   
     // Закриття модального вікна при кліку поза ним
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Подія відправки форми
   form2.addEventListener("submit", (e) => {
-    e.preventDefault(); // Запобігаємо стандартній відправці форми
+    e.preventDefault(); 
 
     // Показуємо модальне вікно
     modal2.style.display = "flex";
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Закриття модального вікна
   closeModal2.addEventListener("click", () => {
     modal2.style.display = "none";
-    form2.reset(); // Очищаємо форму після закриття
+    form2.reset(); 
   });
 
   // Закриття модального вікна при кліку поза ним
